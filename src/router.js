@@ -11,6 +11,7 @@ const router = (req, res) => {
     npmRequest(guardianAPIURL, (error, response, body) => {
       console.log('error', error);
       console.log('statusCode:', response && response.statusCode);
+      res.writeHead(response.statusCode, { 'content-type': 'text/html' });
       const data = body;
       res.end(data);
     });

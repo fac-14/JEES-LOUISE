@@ -9,3 +9,15 @@ test('Initialise', (t) => {
   t.equal(num, 2, 'Should return 2');
   t.end();
 });
+
+test('check status code is 200', (t) => {
+  supertest(router)
+    .get('/')
+    .expect(200)
+    .expect('Content-Type', 'text/html')
+    .end((err, res) => {
+      t.error(err);
+      t.equal(res, res, 'should return res');
+      t.end();
+    });
+});
