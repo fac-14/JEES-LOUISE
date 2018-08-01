@@ -1,11 +1,11 @@
 const test = require('tape');
 
-const router = require('./router');
-
 const supertest = require('supertest');
 
+const router = require('./router');
+
 test('Initialise', (t) => {
-  let num = 2;
+  const num = 2;
   t.equal(num, 2, 'Should return 2');
   t.end();
 });

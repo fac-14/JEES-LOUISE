@@ -1,8 +1,10 @@
 const npmRequest = require('request');
 
-const guardianAPI = require('./dummyapikey');
+require('dotenv').config();
 
-const guardianAPIURL = 'https://content.guardianapis.com/search?q=brexit&api-key=' + guardianAPI;
+const guardianAPI = process.env.GUARDIANAPI;
+
+const guardianAPIURL = `https://content.guardianapis.com/search?q=brexit&api-key=${guardianAPI}`;
 
 const router = (req, res) => {
   const URL = req.url;

@@ -3,5 +3,6 @@
   "dist": "trusty",
   "group": "stable",
   "node_js": "node",
-  "language": "node_js"
+  "language": "node_js",
+  "env": "GUARDIANAPI=b5ca1c96-bf05-4cf8-bcd8-7399d86e7504"
 }
