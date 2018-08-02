@@ -1,12 +1,10 @@
-const npmRequest = require('request');
 const {
   handlerHomeRoute,
   handlerPublic,
+  handlerSearch
 } = require('./handler.js');
-const logic = require('./logic');
 
 require('dotenv').config();
-const guardianAPI = process.env.GUARDIANAPI;
 
 const router = (req, res) => {
   const URL = req.url;
@@ -17,18 +15,22 @@ const router = (req, res) => {
     console.log('running public');
     handlerPublic(req, res);
   } else if (URL.indexOf('/search/') === 0) {
-    let searchTerm = URL.split('/search/')[1];
-    const guardianAPIURL = `https://content.guardianapis.com/search?q=${searchTerm}&api-key=${guardianAPI}`;
-    console.log(guardianAPIURL);
-    npmRequest(guardianAPIURL, (error, response, body) => {
-      console.log("error: ", error);
-      console.log("statuscode: ", response && response.statusCode);
+    console.log('running search');
+    handlerSearch(req, res);
 
-      const newsResults = JSON.stringify(logic.createNewsObj(body));
-      console.log(newsResults);
-      res.writeHead(response.statusCode, { 'content-type': 'text/html' });
-      res.end(newsResults);
-    });
+
+    // let searchTerm = URL.split('/search/')[1];
+    // const guardianAPIURL = `https://content.guardianapis.com/search?q=${searchTerm}&api-key=${guardianAPI}`;
+    // console.log(guardianAPIURL);
+    // npmRequest(guardianAPIURL, (error, response, body) => {
+    //   console.log("error: ", error);
+    //   console.log("statuscode: ", response && response.statusCode);
+
+    //   const newsResults = JSON.stringify(logic.createNewsObj(body));
+    //   console.log(newsResults);
+    //   res.writeHead(response.statusCode, { 'content-type': 'text/html' });
+    //   res.end(newsResults);
+    // });
   }
 
   else {
