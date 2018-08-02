@@ -1,6 +1,6 @@
 # JEES-LOUISE
 
-Sorry BORING Readme another will follow.
+Sorry BORING Readme another one will follow.
 
 The following user stories were implemented: 
 1) I can write any search term into a search box and hit submit
