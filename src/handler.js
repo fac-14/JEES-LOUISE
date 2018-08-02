@@ -29,7 +29,7 @@ const handlerHomeRoute = (response) => {
         console.log(error);
         return;
       }
-      response.writeHead(200, 'Content-type: text/html');
+      response.writeHead(200, { 'Content-type': 'text/html' });
       response.end(file);
     }
   )
@@ -69,7 +69,7 @@ const handlerSearch = (req, res) => {
 
     const newsResults = JSON.stringify(logic.createNewsObj(body));
     console.log(newsResults);
-    res.writeHead(response.statusCode, { 'content-type': 'text/html' });
+    res.writeHead(response.statusCode, { 'content-type': 'application/json' });
     res.end(newsResults);
   });
 };
@@ -84,7 +84,7 @@ const handlerLastSearch = (req, res) => {
 
     const musicResults = JSON.stringify(logic.createMusicObj(body));
     console.log(musicResults);
-    res.writeHead(response.statusCode, { 'content-type': 'text/html' });
+    res.writeHead(response.statusCode, { 'content-type': 'application/json' });
     res.end(musicResults);
   });
 };
