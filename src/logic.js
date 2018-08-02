@@ -7,6 +7,7 @@ const dummy = require('../lastfm-dummy.json');
 
 const logic = {
   jsonArr: array => array instanceof Array,
+  // creates JSON object out of guardian API call response
   createNewsObj: (data) => {
     const parsedData = JSON.parse(data);
     const newsData = parsedData.response.results;
@@ -22,7 +23,7 @@ const logic = {
     });
     return newsObj;
   },
-
+  // creates JSON object out of lastFm API call response
   createMusicObj: (data) => {
     const parsedData = JSON.parse(data);
     const musicData = parsedData.results.trackmatches.track;
