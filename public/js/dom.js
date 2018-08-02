@@ -31,7 +31,7 @@ function populate(data) {
     var titleContent = document.createTextNode(data[i]['articleTitle']);
     var dateContent = document.createTextNode('Published: ' + pubDate[0]);
     articleLink.setAttribute('href', data[i]['articleUrl']);
-    articleLink.setAttribute('target', '_target');
+    articleLink.setAttribute('target', '_target');articleDiv.appendChild(date);
 
     title.appendChild(titleContent);
     date.appendChild(dateContent);
