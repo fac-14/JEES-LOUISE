@@ -1,8 +1,13 @@
 const fs = require('fs');
 
+const npmRequest = require('request');
+
 const path = require('path');
 
+const logic = require('./logic');
+
 require('dotenv').config();
+const guardianAPI = process.env.GUARDIANAPI;
 
 const buildPath = (myPath) => {
   return path.join(__dirname, '..', myPath);
@@ -21,7 +26,7 @@ const handlerHomeRoute = (response) => {
       if (error) {
         console.log(error);
         return;
-      } 
+      }
       response.writeHead(200, 'Content-type: text/html');
       response.end(file);
     }
@@ -46,15 +51,31 @@ const handlerPublic = (request, response) => {
     if (error) {
       console.log(error);
       return;
-    } 
+    }
     response.writeHead(200, `Content-Type: ${extensionType[extension]}`);
     response.end(file);
+  });
+};
+
+const handlerSearch = (req, res) => {
+  let searchTerm = req.url.split('/search/')[1];
+  const guardianAPIURL = `https://content.guardianapis.com/search?q=${searchTerm}&api-key=${guardianAPI}`;
+  console.log(guardianAPIURL);
+  npmRequest(guardianAPIURL, (error, response, body) => {
+    console.log("error: ", error);
+    console.log("statuscode: ", response && response.statusCode);
+
+    const newsResults = JSON.stringify(logic.createNewsObj(body));
+    console.log(newsResults);
+    res.writeHead(response.statusCode, { 'content-type': 'text/html' });
+    res.end(newsResults);
   });
 };
 
 module.exports = {
   handlerHomeRoute,
   handlerPublic,
+  handlerSearch,
 };
 
 // const handleSearch = ()
