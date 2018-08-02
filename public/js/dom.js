@@ -10,17 +10,21 @@ submitBtn.addEventListener('click', function (e) {
   var inputValue = input.value;
   console.log('input ' + inputValue);
   requestData('/search/' + inputValue, populate);
+  requestData('/lastsearch/' + inputValue, musicPopulate);
 });
 
+
+
+
 // unfinished function to populate DOM with guardian response data
-function populate(data,) {
+function populate(data, ) {
   clearList();
   for (var i = 0; i <= 4; i++) {
     //split date to remove time
     var pubDate = data[i]['pubDate'].split('T');
 
     var articleDiv = document.createElement('div');
-    
+
     var title = document.createElement('h3');
     var date = document.createElement('p');
     var articleLink = document.createElement('a');
@@ -32,14 +36,18 @@ function populate(data,) {
     var titleContent = document.createTextNode(data[i]['articleTitle']);
     var dateContent = document.createTextNode('Published: ' + pubDate[0]);
     articleLink.setAttribute('href', data[i]['articleUrl']);
-    articleLink.setAttribute('target', '_target');articleDiv.appendChild(date);
+    articleLink.setAttribute('target', '_target'); articleDiv.appendChild(date);
 
     title.appendChild(titleContent);
     date.appendChild(dateContent);
-    
+
     newsContainer.appendChild(articleDiv);
-    
+
   }
+}
+
+function musicPopulate(data) {
+  console.log('MUSIC', data);
 }
 
 function clearList() {

@@ -1,7 +1,8 @@
 const {
   handlerHomeRoute,
   handlerPublic,
-  handlerSearch
+  handlerSearch,
+  handlerLastSearch,
 } = require('./handler.js');
 
 require('dotenv').config();
@@ -31,6 +32,9 @@ const router = (req, res) => {
     //   res.writeHead(response.statusCode, { 'content-type': 'text/html' });
     //   res.end(newsResults);
     // });
+  } else if (URL.indexOf('/lastsearch/') === 0) {
+    console.log('running lastfm search');
+    handlerLastSearch(req, res);
   }
   else {
     res.writeHead(404, { 'content-type': 'text/html' });
