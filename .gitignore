@@ -64,3 +64,6 @@ typings/
 
 # ignore dummyapikey.js
 dummyapikey.js
+
+# ignore vscode workspace settings
+.vscode
