@@ -4,9 +4,13 @@ var submitBtn = document.querySelector('#search-btn');
 var input = document.querySelector('#search-input');
 var newsContainer = document.querySelector('#news-container');
 var songContainer = document.querySelector('#song-container');
+var sections = document.querySelector('section');
 
 submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
+  // add css to divs as you get results
+  sections.classList.add('container-style');
+
   var inputValue = input.value;
   console.log('input ' + inputValue);
   requestData('/search/' + inputValue, populate);
@@ -14,9 +18,7 @@ submitBtn.addEventListener('click', function (e) {
 });
 
 
-
-
-// unfinished function to populate DOM with guardian response data
+// populate DOM with guardian response data
 function populate(data, ) {
   clearList();
   for (var i = 0; i <= 4; i++) {
@@ -25,12 +27,10 @@ function populate(data, ) {
 
     var articleDiv = document.createElement('div');
 
-    var title = document.createElement('h3');
     var date = document.createElement('p');
     var articleLink = document.createElement('a');
 
     articleDiv.appendChild(articleLink);
-    articleLink.appendChild(title);
     articleDiv.appendChild(date);
 
     var titleContent = document.createTextNode(data[i]['articleTitle']);
@@ -38,7 +38,7 @@ function populate(data, ) {
     articleLink.setAttribute('href', data[i]['articleUrl']);
     articleLink.setAttribute('target', '_target'); articleDiv.appendChild(date);
 
-    title.appendChild(titleContent);
+    articleLink.appendChild(titleContent);
     date.appendChild(dateContent);
 
     newsContainer.appendChild(articleDiv);
@@ -54,4 +54,4 @@ function clearList() {
   while (newsContainer.firstChild) {
     newsContainer.removeChild(newsContainer.firstChild);
   }
-}
+};
