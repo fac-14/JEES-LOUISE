@@ -24,7 +24,6 @@ function populate(data, ) {
     var pubDate = data[i]['pubDate'].split('T');
 
     var articleDiv = document.createElement('div');
-
     var title = document.createElement('h3');
     var date = document.createElement('p');
     var articleLink = document.createElement('a');
@@ -35,12 +34,14 @@ function populate(data, ) {
 
     var titleContent = document.createTextNode(data[i]['articleTitle']);
     var dateContent = document.createTextNode('Published: ' + pubDate[0]);
-    articleLink.setAttribute('href', data[i]['articleUrl']);
-    articleLink.setAttribute('target', '_target'); articleDiv.appendChild(date);
 
+    articleLink.setAttribute('href', data[i]['articleUrl']);
+    articleLink.setAttribute('target', '_target');
+
+
+    articleDiv.appendChild(date);
     title.appendChild(titleContent);
     date.appendChild(dateContent);
-
     newsContainer.appendChild(articleDiv);
 
   }
@@ -48,10 +49,46 @@ function populate(data, ) {
 
 function musicPopulate(data) {
   console.log('MUSIC', data);
+  clearMusicList();
+  for (var i = 0; i <= 4; i++) {
+    var artist = data[i]['artist'];
+    var title = data[i]['title'];
+    var link = data[i]['songUrl'];
+
+    var articleDiv = document.createElement('div');
+    var titleHeader = document.createElement('h3');
+    var artistText = document.createElement('p');
+    var songLink = document.createElement('a');
+
+    articleDiv.appendChild(songLink);
+    songLink.appendChild(titleHeader);
+    articleDiv.appendChild(artistText);
+
+    var titleContent = document.createTextNode(title);
+    var artistContent = document.createTextNode('Artist: ' + artist);
+    songLink.setAttribute('href', link);
+    songLink.setAttribute('target', '_target');
+
+    articleDiv.appendChild(artistContent);
+    titleHeader.appendChild(titleContent);
+    artistText.appendChild(artistContent);
+
+    songContainer.appendChild(articleDiv);
+
+  }
+
+
+
 }
 
 function clearList() {
   while (newsContainer.firstChild) {
     newsContainer.removeChild(newsContainer.firstChild);
+  }
+}
+
+function clearMusicList() {
+  while (songContainer.firstChild) {
+    songContainer.removeChild(songContainer.firstChild);
   }
 }
