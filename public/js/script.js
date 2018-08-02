@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+// reusable xhr request function (called in DOM.js) making API request to our backend 
+
 function requestData(url, cb) {
   console.log('url ' + url);
   var xhr = new XMLHttpRequest();

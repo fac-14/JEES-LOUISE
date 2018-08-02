@@ -5,23 +5,28 @@ var input = document.querySelector('#search-input');
 var newsContainer = document.querySelector('#news-container');
 var songContainer = document.querySelector('#song-container');
 
-
+// Set up click event on button triggering 2 xhr calls (in script.js) 
+// one for guardian, one for lastFM
 submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
   var inputValue = input.value;
   console.log('input ' + inputValue);
+
+  // add validation alert if buttons gets clicked without input val
   if (inputValue.trim() == "") {
     alert("Please enter a search Term");
     return;
   }
-
+  // fire requestData function creating 2 unique URLs 
+  // /search/ + input for Guardian and /lastsearch/ for lastFM
+  // requestData uses a callback populate/ musicPopulate to populate the DOM
   requestData('/search/' + inputValue, populate);
   requestData('/lastsearch/' + inputValue, musicPopulate);
 });
 
 
-// unfinished function to populate DOM with guardian response data
-function populate(data, ) {
+// function to populate DOM with guardian response data
+function populate(data) {
   clearList();
 
   // Create Header Element "News"
@@ -59,7 +64,7 @@ function populate(data, ) {
 
   }
 }
-
+// function to populate DOM with lastFm response data
 function musicPopulate(data) {
 
   clearMusicList();
@@ -105,7 +110,7 @@ function musicPopulate(data) {
 
 
 }
-
+// functions to clear population on each button click
 function clearList() {
   while (newsContainer.firstChild) {
     newsContainer.removeChild(newsContainer.firstChild);
