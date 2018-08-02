@@ -4,11 +4,16 @@ var submitBtn = document.querySelector('#search-btn');
 var input = document.querySelector('#search-input');
 var newsContainer = document.querySelector('#news-container');
 var songContainer = document.querySelector('#song-container');
+var sections = document.querySelector('section');
 
 // Set up click event on button triggering 2 xhr calls (in script.js) 
 // one for guardian, one for lastFM
 submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
+  // add css to divs as you get results
+  newsContainer.classList.add('container-style');
+  songContainer.classList.add('container-style');
+
   var inputValue = input.value;
   console.log('input ' + inputValue);
 
@@ -25,6 +30,7 @@ submitBtn.addEventListener('click', function (e) {
 });
 
 
+
 // function to populate DOM with guardian response data
 function populate(data) {
   clearList();
@@ -37,18 +43,18 @@ function populate(data) {
   newsHeader.appendChild(categoryHeadline);
   newsContainer.appendChild(newsHeader);
 
-
   for (var i = 0; i <= 4; i++) {
     //split date to remove time
     var pubDate = data[i]['pubDate'].split('T');
 
     var articleDiv = document.createElement('div');
+
     var title = document.createElement('h3');
+
     var date = document.createElement('p');
     var articleLink = document.createElement('a');
 
     articleDiv.appendChild(articleLink);
-    articleLink.appendChild(title);
     articleDiv.appendChild(date);
 
     var titleContent = document.createTextNode(data[i]['articleTitle']);
@@ -57,8 +63,10 @@ function populate(data) {
     articleLink.setAttribute('href', data[i]['articleUrl']);
     articleLink.setAttribute('target', '_target');
 
+
     articleDiv.appendChild(date);
     title.appendChild(titleContent);
+    articleLink.appendChild(titleContent);
     date.appendChild(dateContent);
     newsContainer.appendChild(articleDiv);
 

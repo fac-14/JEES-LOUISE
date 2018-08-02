@@ -6,21 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Our amazing website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Modern+Antiqua|Libre+Franklin|Carter+One" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="screen" href="/../public/css/style.css" />
 
 </head>
 
 <body>
-  <h1>Sup, what you looking at?</h1>
+  <h1>THE MUSE</h1>
+  <main>
+    <form>
+      <label class="visually-hidden" for="search-input">search for news stories here</label>
+      <input type="text" id="search-input">
+      <button id="search-btn">submit</button>
+    </form>
 
-  <form>
-    <label class="visually-hidden" for="search-input">search for news stories here</label>
-    <input type="text" id="search-input">
-    <button id="search-btn">submit</button>
-  </form>
-
-  <section id="news-container"></section>
-  <section id="song-container"></section>
+    <section id="news-container"></section>
+    <section id="song-container"></section>
+  </main>
 
   <script src="/../public/js/script.js"></script>
   <script src="/../public/js/dom.js"></script>
