@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node src/router-test.js | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "tape": "^4.9.1"
   },
   "dependencies": {
+    "dotenv": "^6.0.0",
     "request": "^2.87.0"
   }
 }
