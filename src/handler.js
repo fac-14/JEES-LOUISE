@@ -67,7 +67,7 @@ const handlerSearch = (req, res) => {
 
     const newsResults = JSON.stringify(logic.createNewsObj(body));
     console.log(newsResults);
-    res.writeHead(response.statusCode, { 'content-type': 'text/html' });
+    res.writeHead(response.statusCode, { 'content-type': 'application/json' });
     res.end(newsResults);
   });
 };
