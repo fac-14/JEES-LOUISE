@@ -7,7 +7,9 @@ const path = require('path');
 const logic = require('./logic');
 
 require('dotenv').config();
+
 const guardianAPI = process.env.GUARDIANAPI;
+const lastfmAPI = process.env.LASTFMAPI;
 
 const buildPath = (myPath) => {
   return path.join(__dirname, '..', myPath);
@@ -72,10 +74,27 @@ const handlerSearch = (req, res) => {
   });
 };
 
+const handlerLastSearch = (req, res) => {
+  let searchTerm = req.url.split('/lastsearch/')[1];
+  const lastfmAPIURL = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${searchTerm}&api_key=${lastfmAPI}&format=json`;
+  console.log(lastfmAPIURL);
+  npmRequest(lastfmAPIURL, (error, response, body) => {
+    console.log("error: ", error);
+    console.log("statuscode: ", response && response.statusCode);
+
+    const musicResults = JSON.stringify(logic.createMusicObj(body));
+    console.log(musicResults);
+    res.writeHead(response.statusCode, { 'content-type': 'text/html' });
+    res.end(musicResults);
+  });
+};
+
+
 module.exports = {
   handlerHomeRoute,
   handlerPublic,
   handlerSearch,
+  handlerLastSearch,
 };
 
 // const handleSearch = ()
