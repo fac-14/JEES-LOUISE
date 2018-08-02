@@ -5,10 +5,16 @@ var input = document.querySelector('#search-input');
 var newsContainer = document.querySelector('#news-container');
 var songContainer = document.querySelector('#song-container');
 
+
 submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
   var inputValue = input.value;
   console.log('input ' + inputValue);
+  if (inputValue.trim() == "") {
+    alert("Please enter a search Term");
+    return;
+  }
+
   requestData('/search/' + inputValue, populate);
   requestData('/lastsearch/' + inputValue, musicPopulate);
 });
