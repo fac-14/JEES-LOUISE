@@ -14,11 +14,19 @@ submitBtn.addEventListener('click', function (e) {
 });
 
 
-
-
 // unfinished function to populate DOM with guardian response data
 function populate(data, ) {
   clearList();
+
+  // Create Header Element "News"
+  var newsHeader = document.createElement('header');
+  var categoryHeadline = document.createElement('h2');
+  var headerContent = document.createTextNode('NEWS');
+  categoryHeadline.appendChild(headerContent);
+  newsHeader.appendChild(categoryHeadline);
+  newsContainer.appendChild(newsHeader);
+
+
   for (var i = 0; i <= 4; i++) {
     //split date to remove time
     var pubDate = data[i]['pubDate'].split('T');
@@ -38,7 +46,6 @@ function populate(data, ) {
     articleLink.setAttribute('href', data[i]['articleUrl']);
     articleLink.setAttribute('target', '_target');
 
-
     articleDiv.appendChild(date);
     title.appendChild(titleContent);
     date.appendChild(dateContent);
@@ -48,8 +55,18 @@ function populate(data, ) {
 }
 
 function musicPopulate(data) {
-  console.log('MUSIC', data);
+
   clearMusicList();
+
+  // Create Header Element "MUSIC"
+  var musicHeader = document.createElement('header');
+  var categoryHeadline = document.createElement('h2');
+  var headerContent = document.createTextNode('MUSIC');
+  categoryHeadline.appendChild(headerContent);
+  musicHeader.appendChild(categoryHeadline);
+  songContainer.appendChild(musicHeader);
+
+
   for (var i = 0; i <= 4; i++) {
     var artist = data[i]['artist'];
     var title = data[i]['title'];
@@ -64,10 +81,12 @@ function musicPopulate(data) {
     songLink.appendChild(titleHeader);
     articleDiv.appendChild(artistText);
 
+
     var titleContent = document.createTextNode(title);
     var artistContent = document.createTextNode('Artist: ' + artist);
     songLink.setAttribute('href', link);
     songLink.setAttribute('target', '_target');
+
 
     articleDiv.appendChild(artistContent);
     titleHeader.appendChild(titleContent);
