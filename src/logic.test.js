@@ -52,11 +52,13 @@ test('Test if jsonResult is an array', (t) => {
 });
 
 test('Test if we get an array with length of 5', (t) => {
-  t.equal(logic.getFive(responseArr), 5, 'should return 5');
+  t.equal(logic.createNewsObj(json).length, 5, 'should return 5');
   t.end();
 });
 
-// 
-test('Check each news object contains a title, date and link', (t) => {
-  t.equal()
-})
+
+test('Check each news object contains a articleTitle, pubdate and articleUrl', (t) => {
+  t.deepEqual(Object.getOwnPropertyNames(logic.createNewsObj(json)[0]), ['articleTitle', 'pubDate', 'articleUrl'], 'object[0] in array should contain correct properties');
+  t.deepEqual(Object.getOwnPropertyNames(logic.createNewsObj(json)[3]), ['articleTitle', 'pubDate', 'articleUrl'], 'object[3] in array should contain correct properties');
+  t.end();
+});
