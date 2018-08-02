@@ -8,21 +8,25 @@ var sections = document.querySelector('section');
 
 submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
+  // add css to divs as you get results
   sections.classList.add('container-style');
+
   var inputValue = input.value;
   console.log('input ' + inputValue);
   requestData('/search/' + inputValue, populate);
+  requestData('/lastsearch/' + inputValue, musicPopulate);
 });
 
-// unfinished function to populate DOM with guardian response data
-function populate(data) {
+
+// populate DOM with guardian response data
+function populate(data, ) {
+  clearList();
   for (var i = 0; i <= 4; i++) {
     //split date to remove time
     var pubDate = data[i]['pubDate'].split('T');
 
     var articleDiv = document.createElement('div');
 
-    // var title = document.createElement('h3');
     var date = document.createElement('p');
     var articleLink = document.createElement('a');
 
@@ -42,8 +46,12 @@ function populate(data) {
   }
 }
 
-function hideDivs() {
-  if (newsContainer.firstChild) {
-    sections.setAttribute('class', 'visually-hidden');
+function musicPopulate(data) {
+  console.log('MUSIC', data);
+}
+
+function clearList() {
+  while (newsContainer.firstChild) {
+    newsContainer.removeChild(newsContainer.firstChild);
   }
 };
