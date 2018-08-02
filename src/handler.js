@@ -21,7 +21,7 @@ const handlerHomeRoute = (response) => {
       if (error) {
         console.log(error);
         return;
-      } 
+      }
       response.writeHead(200, 'Content-type: text/html');
       response.end(file);
     }
@@ -46,7 +46,7 @@ const handlerPublic = (request, response) => {
     if (error) {
       console.log(error);
       return;
-    } 
+    }
     response.writeHead(200, `Content-Type: ${extensionType[extension]}`);
     response.end(file);
   });

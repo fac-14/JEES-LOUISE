@@ -3,6 +3,7 @@ const {
   handlerHomeRoute,
   handlerPublic,
 } = require('./handler.js');
+const logic = require('./logic');
 
 require('dotenv').config();
 const guardianAPI = process.env.GUARDIANAPI;
@@ -16,17 +17,17 @@ const router = (req, res) => {
     console.log('running public');
     handlerPublic(req, res);
   } else if (URL.indexOf('/search/') === 0) {
-    console.log(URL);
     let searchTerm = URL.split('/search/')[1];
-    console.log(searchTerm);
     const guardianAPIURL = `https://content.guardianapis.com/search?q=${searchTerm}&api-key=${guardianAPI}`;
     console.log(guardianAPIURL);
     npmRequest(guardianAPIURL, (error, response, body) => {
       console.log("error: ", error);
       console.log("statuscode: ", response && response.statusCode);
+
+      const newsResults = JSON.stringify(logic.createNewsObj(body));
+      console.log(newsResults);
       res.writeHead(response.statusCode, { 'content-type': 'text/html' });
-      const data = body;
-      res.end(data);
+      res.end(newsResults);
     });
   }
 
