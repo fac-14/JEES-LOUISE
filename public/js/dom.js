@@ -13,7 +13,8 @@ submitBtn.addEventListener('click', function (e) {
 });
 
 // unfinished function to populate DOM with guardian response data
-function populate(data) {
+function populate(data,) {
+  clearList();
   for (var i = 0; i <= 4; i++) {
     //split date to remove time
     var pubDate = data[i]['pubDate'].split('T');
@@ -38,5 +39,11 @@ function populate(data) {
     
     newsContainer.appendChild(articleDiv);
     
+  }
+}
+
+function clearList() {
+  while (newsContainer.firstChild) {
+    newsContainer.removeChild(newsContainer.firstChild);
   }
 }
