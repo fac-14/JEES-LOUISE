@@ -32,7 +32,6 @@ const router = (req, res) => {
     //   res.end(newsResults);
     // });
   }
-
   else {
     res.writeHead(404, { 'content-type': 'text/html' });
     res.end('unknown url');
