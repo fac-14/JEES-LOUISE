@@ -1,11 +1,15 @@
-const json = require('./guardian-brexit-search-dummy.json');
+// const json = require('./guardian-brexit-search-dummy.json');
+const router = require('./router');
 
-const jsonResults = json.response.results;
+
+// const jsonResults = json.response.results;
 
 const logic = {
   jsonArr: array => array instanceof Array,
   createNewsObj: (data) => {
-    const newsData = data.response.results;
+    const parsedData = JSON.parse(data);
+    console.log(parsedData);
+    const newsData = parsedData.response.results;
     const newsObj = [];
     newsData.forEach((value, index) => {
       const obj = {};
