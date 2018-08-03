@@ -6,7 +6,7 @@
   "scripts": {
     "logic-test": "nodemon src/logic.test.js | tap-spec",
     "test": "node src/router-test.js | tap-spec",
-    "server": "nodemon src/server.js"
+    "start": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
