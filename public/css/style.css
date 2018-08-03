@@ -155,13 +155,13 @@ main{
 }
 
 .header-area {
-  border-left: salmon 4px solid;
+  border-left: #4C2A85 4px solid;
   width: 100%;
 }
 
 .header-container {
-  border-left: yellow 4px solid; 
-  border-bottom: yellow 4px solid;
+  border-left: #7692FF 4px solid; 
+  border-bottom: #7692FF 4px solid;
   margin-left: 24px;
   width: calc(100% - 24px);
   padding-right: 24px;
@@ -181,6 +181,12 @@ h1 {
   margin-bottom: 42px;
 }
 
+h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 32px;
+}
+
 form{
   margin: auto;
 }
@@ -196,8 +202,8 @@ button{
 }
 
 .content-container {
-  border-top: salmon 4px solid;
-  border-right: salmon 4px solid;
+  border-top: #4C2A85 4px solid;
+  border-right: #4C2A85 4px solid;
   width: 100%;
 }
 
@@ -218,14 +224,17 @@ button{
   font-size: 0.8rem;
 }
 
+#news-container, #song-container {
+  background: #4C2A85;
+}
+
 a {
   font-family: 'Libre Franklin', Times, serif;
-  color: #FF6F4F;
+  color: white;
   text-decoration: none;
 }
 
 a:hover {
-  color: #89043D;
   -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
   -moz-animation: neon2 1.5s ease-in-out infinite alternate;
   animation: neon2 1.5s ease-in-out infinite alternate;
@@ -245,10 +254,10 @@ a:hover {
 
 @-webkit-keyframes neon2 {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #228DFF, 0 0 60px #228DFF, 0 0 70px #228DFF;
   }
   to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #228DFF, 0 0 25px #228DFF, 0 0 30px #228DFF;
   }
 }
 
@@ -276,14 +285,17 @@ a:hover {
   transition: 0.3s;
   width: 100%;
   margin: 0;
+  color: white;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: lightsalmon;
+  background-color: rgb(198, 178, 248);
+  color:#4C2A85;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: salmon;
+  background-color: #4C2A85;
+  color: white;
 }
