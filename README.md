@@ -4,6 +4,8 @@
 
 Sorry BORING Readme another one will follow.
 
+Check out the web app on Heroku here: https://enigmatic-thicket-19667.herokuapp.com/
+
 ## The following user stories were implemented: 
 1) I can write any search term into a search box and hit submit
 2) based on the search term an API call to Guardian will be triggered and the 5 most popular articles including title, publishing date and link will be shown
@@ -16,13 +18,8 @@ Sorry BORING Readme another one will follow.
 - use travis for continuous github control 
 
 ## Stretch goals:
-- Host the project on Heroku
-
-
-
-# please use locally for now
-- clone repo 
-- run npm install
-- run node src/server.js
+- Add more items
+- Further styling (e.g. Tab the two divs)
+- Option to then find similar artists
 
 
