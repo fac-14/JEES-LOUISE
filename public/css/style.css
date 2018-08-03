@@ -279,7 +279,7 @@ a:hover {
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: salmon;
+  background-color: lightsalmon;
 }
 
 /* Create an active/current tablink class */
