@@ -6,6 +6,7 @@ var newsContainer = document.querySelector('#news-container');
 var songContainer = document.querySelector('#song-container');
 var sections = document.querySelector('section');
 var contentContainer = document.querySelector('content-container');
+var tabHidden = document.getElementById('tabID');
 
 // Set up click event on button triggering 2 xhr calls (in script.js) 
 // one for guardian, one for lastFM
@@ -72,7 +73,12 @@ function populate(data) {
     date.appendChild(dateContent);
     newsContainer.appendChild(articleDiv);
 
+    document.getElementById("defaultOpen").click();
+
   }
+
+  tabHidden.classList.remove('tab-hidden');
+
 }
 // function to populate DOM with lastFm response data
 function musicPopulate(data) {
@@ -117,8 +123,6 @@ function musicPopulate(data) {
 
   }
 
-
-
 }
 // functions to clear population on each button click
 function clearList() {
@@ -131,4 +135,26 @@ function clearMusicList() {
   while (songContainer.firstChild) {
     songContainer.removeChild(songContainer.firstChild);
   }
+}
+
+
+function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
 }
