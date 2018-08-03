@@ -203,12 +203,17 @@ button{
 
 .container-style{
   width: 100%;
-  padding: 48px 64px 48px 64px;
+  padding: 48px 64px 48px 32px;
   }
 
 .container-style > div{
-  padding-top: 8px;
+  padding-top: 16px;
   padding-bottom: 8px;
+}
+
+.container-style > div > p {
+  padding-top: 8px;
+  font-size: 0.8rem;
 }
 
 a {
@@ -216,6 +221,7 @@ a {
   color: #FF6F4F;
   text-decoration: none;
 }
+
 a:hover {
   color: #89043D;
   -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
