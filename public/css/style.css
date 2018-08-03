@@ -210,6 +210,7 @@ button{
 .container-style > div{
   padding-top: 16px;
   padding-bottom: 8px;
+  word-wrap: break-word;
 }
 
 .container-style > div > p {

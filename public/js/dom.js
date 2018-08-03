@@ -31,6 +31,7 @@ submitBtn.addEventListener('click', function (e) {
     requestData('/lastsearch/' + inputValue, musicPopulate);
   }
 
+  tabHidden.classList.remove('tab-hidden');
 
 });
 
@@ -79,7 +80,7 @@ function populate(data) {
 
   }
 
-  tabHidden.classList.remove('tab-hidden');
+
 
 }
 // function to populate DOM with lastFm response data
