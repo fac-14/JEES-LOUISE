@@ -5,6 +5,7 @@ var input = document.querySelector('#search-input');
 var newsContainer = document.querySelector('#news-container');
 var songContainer = document.querySelector('#song-container');
 var sections = document.querySelector('section');
+var contentContainer = document.querySelector('content-container');
 
 // Set up click event on button triggering 2 xhr calls (in script.js) 
 // one for guardian, one for lastFM
@@ -27,6 +28,7 @@ submitBtn.addEventListener('click', function (e) {
   // requestData uses a callback populate/ musicPopulate to populate the DOM
   requestData('/search/' + inputValue, populate);
   requestData('/lastsearch/' + inputValue, musicPopulate);
+
 });
 
 

@@ -12,16 +12,21 @@
 </head>
 
 <body>
-  <h1>THE MUSE</h1>
   <main>
-    <form>
-      <label class="visually-hidden" for="search-input">search for news stories here</label>
-      <input type="text" id="search-input">
-      <button id="search-btn">submit</button>
-    </form>
-
-    <section id="news-container"></section>
-    <section id="song-container"></section>
+    <header class="header-area">
+      <div class="header-container">
+        <h1>THE MUSE</h1>
+        <form>
+          <label class="visually-hidden" for="search-input">search for news stories here</label>
+          <input type="text" id="search-input">
+          <button id="search-btn">submit</button>
+        </form>
+      </div>
+    </header>
+    <div class="content-container">
+      <section id="news-container"></section>
+      <section id="song-container"></section>
+    </div>
   </main>
 
   <script src="/../public/js/script.js"></script>
