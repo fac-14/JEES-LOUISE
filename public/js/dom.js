@@ -5,6 +5,8 @@ var input = document.querySelector('#search-input');
 var newsContainer = document.querySelector('#news-container');
 var songContainer = document.querySelector('#song-container');
 var sections = document.querySelector('section');
+var contentContainer = document.querySelector('content-container');
+var tabHidden = document.getElementById('tabID');
 
 // Set up click event on button triggering 2 xhr calls (in script.js) 
 // one for guardian, one for lastFM
@@ -21,12 +23,16 @@ submitBtn.addEventListener('click', function (e) {
   if (inputValue.trim() == "") {
     alert("Please enter a search Term");
     return;
+  } else {
+    // fire requestData function creating 2 unique URLs 
+    // /search/ + input for Guardian and /lastsearch/ for lastFM
+    // requestData uses a callback populate/ musicPopulate to populate the DOM
+    requestData('/search/' + inputValue, populate);
+    requestData('/lastsearch/' + inputValue, musicPopulate);
   }
-  // fire requestData function creating 2 unique URLs 
-  // /search/ + input for Guardian and /lastsearch/ for lastFM
-  // requestData uses a callback populate/ musicPopulate to populate the DOM
-  requestData('/search/' + inputValue, populate);
-  requestData('/lastsearch/' + inputValue, musicPopulate);
+
+  tabHidden.classList.remove('tab-hidden');
+
 });
 
 
@@ -36,12 +42,12 @@ function populate(data) {
   clearList();
 
   // Create Header Element "News"
-  var newsHeader = document.createElement('header');
-  var categoryHeadline = document.createElement('h2');
-  var headerContent = document.createTextNode('NEWS');
-  categoryHeadline.appendChild(headerContent);
-  newsHeader.appendChild(categoryHeadline);
-  newsContainer.appendChild(newsHeader);
+  // var newsHeader = document.createElement('header');
+  // var categoryHeadline = document.createElement('h2');
+  // var headerContent = document.createTextNode('NEWS');
+  // categoryHeadline.appendChild(headerContent);
+  // newsHeader.appendChild(categoryHeadline);
+  // newsContainer.appendChild(newsHeader);
 
   for (var i = 0; i <= 4; i++) {
     //split date to remove time
@@ -70,7 +76,12 @@ function populate(data) {
     date.appendChild(dateContent);
     newsContainer.appendChild(articleDiv);
 
+    document.getElementById("defaultOpen").click();
+
   }
+
+
+
 }
 // function to populate DOM with lastFm response data
 function musicPopulate(data) {
@@ -78,12 +89,12 @@ function musicPopulate(data) {
   clearMusicList();
 
   // Create Header Element "MUSIC"
-  var musicHeader = document.createElement('header');
-  var categoryHeadline = document.createElement('h2');
-  var headerContent = document.createTextNode('MUSIC');
-  categoryHeadline.appendChild(headerContent);
-  musicHeader.appendChild(categoryHeadline);
-  songContainer.appendChild(musicHeader);
+  // var musicHeader = document.createElement('header');
+  // var categoryHeadline = document.createElement('h2');
+  // var headerContent = document.createTextNode('MUSIC');
+  // categoryHeadline.appendChild(headerContent);
+  // musicHeader.appendChild(categoryHeadline);
+  // songContainer.appendChild(musicHeader);
 
 
   for (var i = 0; i <= 4; i++) {
@@ -115,8 +126,6 @@ function musicPopulate(data) {
 
   }
 
-
-
 }
 // functions to clear population on each button click
 function clearList() {
@@ -129,4 +138,26 @@ function clearMusicList() {
   while (songContainer.firstChild) {
     songContainer.removeChild(songContainer.firstChild);
   }
+}
+
+
+function openDiv(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
 }

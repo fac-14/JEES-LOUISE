@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 
 <head>
   <meta charset="utf-8" />
@@ -8,21 +8,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Modern+Antiqua|Libre+Franklin|Carter+One" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="screen" href="/../public/css/style.css" />
-
 </head>
 
 <body>
-  <h1>THE MUSE</h1>
   <main>
-    <form>
-      <label class="visually-hidden" for="search-input">search for news stories here</label>
-      <input type="text" id="search-input">
-      <button id="search-btn">submit</button>
-    </form>
-
-    <section id="news-container"></section>
-    <section id="song-container"></section>
+    <header class="header-area">
+      <div class="header-container">
+        <h1>THE MUSE</h1>
+        <h2>Find the latest news for your music inspiration</h2>
+        <form>
+          <label class="visually-hidden" for="search-input">search for news stories here</label>
+          <input type="text" id="search-input" placeholder="Enter your search here...">
+          <button id="search-btn">submit</button>
+        </form>
+      </div>
+    </header>
+    <div class="content-container">
+      <!-- Tab links -->
+      <div class="tab tab-hidden" id="tabID">
+        <button class="tablinks" onclick="openDiv(event, 'news-container')" id="defaultOpen">News</button>
+        <button class="tablinks" onclick="openDiv(event, 'song-container')">Music</button>
+      </div>
+      <section id="news-container" class="tabcontent"></section>
+      <section id="song-container" class="tabcontent"></section>
+    </div>
   </main>
+  <footer>
+    <p>Brought to you by JEES-LOUISE inc.</p>
+  </footer>
 
   <script src="/../public/js/script.js"></script>
   <script src="/../public/js/dom.js"></script>
