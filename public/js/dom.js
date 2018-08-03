@@ -23,12 +23,14 @@ submitBtn.addEventListener('click', function (e) {
   if (inputValue.trim() == "") {
     alert("Please enter a search Term");
     return;
+  } else {
+    // fire requestData function creating 2 unique URLs 
+    // /search/ + input for Guardian and /lastsearch/ for lastFM
+    // requestData uses a callback populate/ musicPopulate to populate the DOM
+    requestData('/search/' + inputValue, populate);
+    requestData('/lastsearch/' + inputValue, musicPopulate);
   }
-  // fire requestData function creating 2 unique URLs 
-  // /search/ + input for Guardian and /lastsearch/ for lastFM
-  // requestData uses a callback populate/ musicPopulate to populate the DOM
-  requestData('/search/' + inputValue, populate);
-  requestData('/lastsearch/' + inputValue, musicPopulate);
+
 
 });
 
@@ -138,7 +140,7 @@ function clearMusicList() {
 }
 
 
-function openCity(evt, cityName) {
+function openDiv(evt, tabName) {
   // Declare all variables
   var i, tabcontent, tablinks;
 
@@ -155,6 +157,6 @@ function openCity(evt, cityName) {
   }
 
   // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
+  document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
