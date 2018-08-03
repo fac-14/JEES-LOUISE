@@ -1,16 +1,147 @@
-body{
-  background-color: #1C3041;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-h1 {
-  text-align: center;
-  color: rgb(154, 252, 255);
-  font-family: 'Carter One', Times, serif;
-  font-size: 4rem;
-  margin-top: 4rem;
+/* use border-box so that padding and margins are applied INSIDE elements' width. */
+
+* {
+  box-sizing: border-box;
+  font-family: 'Libre Franklin', Times, serif;
+}
+
+body{
+  background-color: #1C3041;
+  font-family: 'Libre Franklin', Times, serif;
+  color: white;
+  /* display: flex;
+  flex-direction: column;
+  align-content: center; */
 }
 
 main{
@@ -21,8 +152,42 @@ main{
   justify-content: center; 
   font-family: 'Libre Franklin', Times, serif;
   color: rgb(129, 243, 232);
-  width: 80vw;
-  margin: auto;
+  /* height: 100vh; */
+  margin: 0 128px 0 128px;
+  padding: 0;
+}
+
+.header-area {
+  border-left: #4C2A85 4px solid;
+  width: 100%;
+}
+
+.header-container {
+  border-left: #7692FF 4px solid; 
+  border-bottom: #7692FF 4px solid;
+  margin-left: 24px;
+  width: calc(100% - 24px);
+  padding-right: 24px;
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 36px;
+  margin-bottom: 48px;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(154, 252, 255);
+  font-family: 'Carter One', Times, serif;
+  font-size: 4rem;
+  margin-bottom: 42px;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 32px;
 }
 
 form{
@@ -39,23 +204,46 @@ button{
   margin: 0.5rem;
 }
 
+.content-container {
+  border-top: #4C2A85 4px solid;
+  border-right: #4C2A85 4px solid;
+  width: 100%;
+}
+
+.container-style{
+  width: 100%;
+  padding: 48px 64px 48px 32px;
+  display: none;
+  }
+
+.container-style > div{
+  padding-top: 16px;
+  padding-bottom: 8px;
+  word-wrap: break-word;
+}
+
+.container-style > div > p {
+  padding-top: 8px;
+  font-size: 0.8rem;
+}
+
+#news-container, #song-container {
+  background: #4C2A85;
+}
+
 a {
   font-family: 'Libre Franklin', Times, serif;
-  color: #FF6F4F;
+  color: white;
   text-decoration: none;
 }
+
 a:hover {
-  color: #89043D;
   -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
   -moz-animation: neon2 1.5s ease-in-out infinite alternate;
   animation: neon2 1.5s ease-in-out infinite alternate;
 }
 
-.container-style{
-  margin-top: 2rem;
-  padding: 1rem;
-  border: 3px solid salmon;
-  }
+
 
 .visually-hidden {
   /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
@@ -69,9 +257,57 @@ a:hover {
 
 @-webkit-keyframes neon2 {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #228DFF, 0 0 60px #228DFF, 0 0 70px #228DFF;
   }
   to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #228DFF, 0 0 25px #228DFF, 0 0 30px #228DFF;
   }
+}
+
+/* tab section */
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  /* border: 1px solid #ccc; */
+  background-color: #1C3041;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tab-hidden {
+  display: none;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  margin: 0;
+  color: white;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: rgb(198, 178, 248);
+  color:#4C2A85;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #4C2A85;
+  color: white;
+}
+
+footer {
+  display: absolute;
+  bottom: 0;
+  margin: 0 128px 0 128px;
+  text-align: center;
+  padding: 16px;
+  font-size: 8px;
 }
