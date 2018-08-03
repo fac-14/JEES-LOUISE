@@ -195,14 +195,31 @@ form{
 }
 input{
   font-size: 1rem;
-padding: 0.5rem;
-margin: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 button{
   font-size: 1rem;
   padding: 0.5rem;
   margin: 0.5rem;
 }
+
+form > input {
+    font-size: 1rem;
+    padding: 8px;
+    border: rgb(154, 252, 255) 2px solid;
+    margin: 0;
+  }
+
+form > button {
+    font-size: 1rem;
+    padding: 8px 16px 8px 16px;
+    background: #4C2A85;
+    border: #4C2A85 2px solid;
+    color: white;
+    cursor: pointer;
+  }
+
 
 .content-container {
   border-top: #4C2A85 4px solid;
@@ -310,4 +327,41 @@ footer {
   text-align: center;
   padding: 16px;
   font-size: 8px;
+}
+
+/* Mobile breakpoint at 700 */
+
+@media all and (max-width: 750px) {
+  
+main {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+form > input {
+  width: 100%;
+}
+
+form > button {
+  width: 100%;
+  margin: 8px 0 0 0;
+}
+
+.header-container {
+  padding-top: 64px;
+  margin-left: 12px;
+  width: calc(100% - 12px);
+  padding-right: 12px;
+}
+
+footer {
+  width: 70%;
+  margin: auto;
+}
 }
