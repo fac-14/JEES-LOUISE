@@ -42,12 +42,12 @@ function populate(data) {
   clearList();
 
   // Create Header Element "News"
-  var newsHeader = document.createElement('header');
-  var categoryHeadline = document.createElement('h2');
-  var headerContent = document.createTextNode('NEWS');
-  categoryHeadline.appendChild(headerContent);
-  newsHeader.appendChild(categoryHeadline);
-  newsContainer.appendChild(newsHeader);
+  // var newsHeader = document.createElement('header');
+  // var categoryHeadline = document.createElement('h2');
+  // var headerContent = document.createTextNode('NEWS');
+  // categoryHeadline.appendChild(headerContent);
+  // newsHeader.appendChild(categoryHeadline);
+  // newsContainer.appendChild(newsHeader);
 
   for (var i = 0; i <= 4; i++) {
     //split date to remove time
@@ -89,12 +89,12 @@ function musicPopulate(data) {
   clearMusicList();
 
   // Create Header Element "MUSIC"
-  var musicHeader = document.createElement('header');
-  var categoryHeadline = document.createElement('h2');
-  var headerContent = document.createTextNode('MUSIC');
-  categoryHeadline.appendChild(headerContent);
-  musicHeader.appendChild(categoryHeadline);
-  songContainer.appendChild(musicHeader);
+  // var musicHeader = document.createElement('header');
+  // var categoryHeadline = document.createElement('h2');
+  // var headerContent = document.createTextNode('MUSIC');
+  // categoryHeadline.appendChild(headerContent);
+  // musicHeader.appendChild(categoryHeadline);
+  // songContainer.appendChild(musicHeader);
 
 
   for (var i = 0; i <= 4; i++) {
